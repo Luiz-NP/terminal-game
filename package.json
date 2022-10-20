@@ -5,7 +5,8 @@
   "author": "Luiz-NP",
   "license": "MIT",
   "scripts": {
-    "start": "tsnd --respawn --transpile-only src/console.ts"
+    "start": "tsnd --respawn --transpile-only src/console.ts",
+    "build": "yarn tsc"
   },
   "devDependencies": {
     "@types/node": "^18.11.2",
