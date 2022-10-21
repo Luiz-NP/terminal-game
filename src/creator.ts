@@ -1,4 +1,5 @@
 import { Assassin, Archer, Fighter, Mage } from "./characters";
+import { red } from "./colors";
 
 type Player = {
     name: string,
