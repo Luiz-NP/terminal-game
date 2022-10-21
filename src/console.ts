@@ -1,23 +1,38 @@
 const readline = require("readline-sync");
+
+// colors
+import { blue, green, magenta, red, reset } from "./colors";
+
 import { p1, p2, creator } from "./creator";
 import { figth } from "./fight";
 
-const options: string[] = ["Assassin", "Archer", "Fighter", "Mage"];
+let option: number;
+const options: string[] = [`${red}Assassin${reset}`,
+                           `${green}Archer${reset}`,
+                           `${magenta}Fighter${reset}`, 
+                           `${blue}Mage${reset}`];
 
-console.log(`Hi, Welcome`);
+console.log(`${green}Hi, Welcome${reset}`);
 
 function select(player: object, i: number): void {
-    let option: number = readline.keyInSelect(options, `P${i} - Select your character`);
+    option = readline.keyInSelect(options, `${blue}P${i}${reset} - Select your character`);
+    if (option === -1) {
+        console.clear();
+        console.log(`${red}this is not a valid option${reset}`);
+        
+        if (i === 1) select({}, 1);
+        if (i === 2) select({}, 2);
+    }
     console.clear();
-    console.log(`P${i} is an ${options[option]}, see your attributes:`);
+    console.log(`${blue}P${i}${reset} is an ${options[option]}, see your attributes:`);
 
     creator(player, option, i);
 }
 
-select(p1, 1);
+select({}, 1);
 readline.keyInPause();
 console.clear();
-select(p2, 2);
+select({}, 2);
 readline.keyInPause();
 console.clear();
 
